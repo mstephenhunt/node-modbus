@@ -23,3 +23,8 @@ readRegisters({
 ```
 
 ## Job Queue:
+The job queue is an automatic feature of this API that allows you to asynchronously enqueue "modbus jobs" -- but it also has the benefit of:
+   1) Staying connected to the controller while there are jobs in the queue
+   2) Disconnecting from the controller when all jobs are complete
+
+This second feature is super helpful if you have multiple clients connecting to this controller and don't want them to hog ports.
