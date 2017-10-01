@@ -39,3 +39,5 @@ It effectively protects from the modbus controller becoming overloaded while sti
 When reading `coils`, the controller used for this implementation only cared about the first bit. To account for this, only the first bit read from a `coil` is returned.
 
 This means when you provide a `count` to read `coils`, you're getting the first bit of each `coil` from `start` to `count`.
+
+This means, for coil `writes` you're also only writing to the first bit in the 8-bit coil sequence.
