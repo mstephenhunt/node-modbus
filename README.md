@@ -28,3 +28,9 @@ The job queue is an automatic feature of this API that allows you to asynchronou
    2) Disconnecting from the controller when all jobs are complete
 
 This second feature is super helpful if you have multiple clients connecting to this controller and don't want them to hog ports.
+
+## Other Features:
+# Register Read Breakup:
+The controllers I used would become unresponsive if you attempted to read too large of register chunks in one request. Due to this, in `ModbusConnection.readRegisters()`, register reads are broken up into 50-register chunk requests. These are then executed in series, then flattened into a single response to the caller. 
+
+It effectively protects from the modbus controller becoming overloaded while still giving the abstraction that you can read from larger register chunks in one go.
