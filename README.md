@@ -30,12 +30,12 @@ The job queue is an automatic feature of this API that allows you to asynchronou
 This second feature is super helpful if you have multiple clients connecting to this controller and don't want them to hog ports.
 
 ## Other Features:
-# Register Read Breakup:
+### Register Read Breakup:
 The controllers I used would become unresponsive if you attempted to read too large of register chunks in one request. Due to this, in `ModbusConnection.readRegisters()`, register reads are broken up into 50-register chunk requests. These are then executed in series, then flattened into a single response to the caller. 
 
 It effectively protects from the modbus controller becoming overloaded while still giving the abstraction that you can read from larger register chunks in one go.
 
-# Abstracting Single Bool-Coil
+### Abstracting Single Bool-Coil
 When reading `coils`, the controller used for this implementation only cared about the first bit. To account for this, only the first bit read from a `coil` is returned.
 
 This means when you provide a `count` to read `coils`, you're getting the first bit of each `coil` from `start` to `count`.
